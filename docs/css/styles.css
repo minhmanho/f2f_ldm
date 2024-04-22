@@ -1,0 +1,66 @@
+@import url('//fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('//fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+body {
+	color:rgb(0, 0, 0); 
+	font-family: 'Open Sans', sans-serif;
+	min-width:1024px;
+	top:0;
+	left:0;
+	text-align: center; 
+	margin:-30px; 
+	font-size:18px;
+}
+h1 {
+	font-size:45px;
+	line-height:50px; 
+	text-align:center; 
+	font-family: 'Fredoka One', cursive;
+	font-weight: 400;
+}
+h2 {
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+	font-size: 28px;
+	font-weight: 300;
+	color:#000;
+	font-weight: 900;
+}
+a {
+	color:black;
+	text-decoration: none;
+}
+a:hover {
+	color: rgb(23, 38, 252);
+}
+.videoWrapper{
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	height: 0;
+  }
+  .videoWrapper iframe{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:2px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:2px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-baqh{text-align:center;vertical-align:top}
+
+
+/* .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+	overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+	font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} */
+.tg .tg-cly1{text-align:left;vertical-align:middle}
+.tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle}
+.tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+.tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+.tg .tg-nrix{text-align:center;vertical-align:middle}
+.tg .tg-8b8f{text-align:center;text-decoration:underline;vertical-align:middle}

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>F2FLDM: FS to FFPE Translation - Man M. Ho</title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<table width="80%" style="margin-left: auto;  margin-right: auto; table-layout:fixed;">
+	<tbody>
+		<tr>
+			<td>
+				<h1>Latent Diffusion Models with Histopathology Pre-Trained Embeddings for Unpaired Frozen Section to FFPE Translation <br> (F2FLDM)</h1>
+				<br>
+				<table width="90%" style="margin-left: auto;  margin-right: auto; table-layout:fixed;">
+					<tbody><tr>
+					<td>
+						<a href="https://arxiv.org/abs/2404.12650">[Paper]</a>
+					</td>
+					<td>
+						<a href="https://github.com/minhmanho/f2f_ldm">[Code]</a>
+					</td>
+					
+					</tr></tbody>
+				</table>
+				<br>
+				<table width="90%" style="margin-left: auto;  margin-right: auto; table-layout:fixed;">
+					<tbody>
+						<tr>
+							<td>
+								<span style="font-size: 20px;"><a href="https://minhmanho.github.io/"><b>Man M. Ho<sup>1</sup></b></a></span>
+							</td>
+
+							<td>
+								<span style="font-size: 20px;"><b>Shikha Dubey<sup>1</sup></b></span>
+							</td>
+
+							<td>
+								<span style="font-size: 20px;"><b>Yosep Chong<sup>2,3</sup></b></span>
+							</td>
+							<td>
+								<span style="font-size: 20px;"><b>Beatrice Knudsen<sup>3,4</sup></b></span>
+							</td>
+
+							<td>
+								<span style="font-size: 20px;"><b>Tolga Tasdizen<sup>1,5</sup></b></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table width="60%" style="margin-left: auto;  margin-right: auto; table-layout:fixed; font-size: 20px;">
+					<tbody>
+						<tr>
+							<td style="text-align: left;">
+								<br>
+								1. Scientific Computing and Imaging Institute, University of Utah, USA <br>
+								2. The Catholic University of Korea College of Medicine, Korea <br>
+								3. Departmant of Pathology, University of Utah, USA <br>
+								4. Huntsman Cancer Institute, University of Utah Health, USA <br>
+								5. Department of Electrical and Computer Engineering, University of Utah, USA <br>
+								<br>
+								<br>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				arXiv Preprint, 2024
+				<br>
+				<br>
+				<hr>
+				<img src="data/intro.jpg" width=100%/>
+				<br>
+				<p>Figure: Overview of FS and FFPE processes and our motivation.</p>
+				<hr>
+			</td>
+		</tr>
+
+		<tr>
+			<td style="text-align: justify;">
+				<h2>Abstract</h2>
+				<br>
+				The Frozen Section (FS) technique is a rapid and efficient method, taking only 15-30 minutes to prepare slides for pathologists' evaluation during surgery, enabling immediate decisions on further surgical interventions. However, FS process often introduces artifacts and distortions like folds and ice-crystal effects. In contrast, these artifacts and distortions are absent in the higher-quality formalin-fixed paraffin-embedded (FFPE) slides, which require 2-3 days to prepare. While Generative Adversarial Network (GAN)-based methods have been used to translate FS to FFPE images (F2F), they may leave morphological inaccuracies with remaining FS artifacts or introduce new artifacts, reducing the quality of these translations for clinical assessments. In this study, we benchmark recent generative models, focusing on GANs and Latent Diffusion Models (LDMs), to overcome these limitations. We introduce a novel approach that combines LDMs with Histopathology Pre-Trained Embeddings to enhance restoration of FS images. Our framework leverages LDMs conditioned by both text and pre-trained embeddings to learn meaningful features of FS and FFPE histopathology images. Through diffusion and denoising techniques, our approach not only preserves essential diagnostic attributes like color staining and tissue morphology but also proposes an embedding translation mechanism to better predict the targeted FFPE representation of input FS images. As a result, this work achieves a significant improvement in classification performance, with the Area Under the Curve rising from 81.99% to 94.64%, accompanied by an advantageous CaseFD. This work establishes a new benchmark for FS to FFPE image translation quality, promising enhanced reliability and accuracy in histopathology FS image analysis.
+				<hr>
+			</td>
+			
+		</tr>
+		<tr>
+			<td style="text-align: justify;">
+				<h2>Challenges</h2>
+				<br>
+				<img src="data/cyclediffusion_issue.jpg" width=100%/>
+				<br>
+				Performance on CycleDiffusion-restored slides on kidney subtype classification, including Area Under the Curve (AUC) and accuracy, alongside case-wise Fréchet Distance in the HIPT-256 feature space (FD-HIPT256). The higher <b>strength</b>, the more added noise and denoising timesteps, the closer to FFPE domain..
+				<hr>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: justify;">
+				<h2>Method</h2>
+				<br>
+				<img src="data/method.jpg" width=100%/>
+				Figure: Overview of our FS to FFPE image translation framework.
+				<hr>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: justify;">
+				<h2>Ablation Study</h2>
+				<br>
+				<img src="data/chart_all.png" width=100%/>
+				<br>
+				<img src="data/ab.jpg" width=100%/>
+				Figure: Ablation Studies on classifier-free Guidance Scale (GS), Strength, FS to FFPE Embedding Translation, LoRA rank, and L0 Regularization in Restoration of Artifacts in FS images, evaluated on downstream kidney subtype classfication in macro-averaged Area Under the Curve (AUC) and sample-wise Accuracy (Acc).
+				<hr>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: justify;">
+				<h2>A Qualitative Comparison</h2>
+				<br>
+				<img src="data/comp_1.jpg" width=100%/>
+				<br>
+				<img src="data/comp_2.jpg" width=100%/>
+				Figure: A qualitative comparison between AIFFPE, UVCGAN2, CycleDiffusion, and ours. Unpaired FFPE images are from a different tissue.
+				<br>
+				<hr>
+			</td>
+		</tr>
+		<tr>
+				<td style="text-align: center;">
+					<h2>A Quantitative Comparison</h2>
+					<br>
+						<table class="tg" width="100%">
+						<thead>
+						  <tr>
+							<th class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">Method</span></th>
+							<th class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">AUC</span></th>
+							<th class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">Acc</span></th>
+							<th class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">CaseFD w/ DINOv2 ViT-L14</span></th>
+							<th class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">CaseFD w/ HIPT-256</span></th>
+							<th class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">CaseFD w/ ViT-DINO</span></th>
+						  </tr>
+						</thead>
+						<tbody>
+						  <tr>
+							<td class="tg-lboi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">FFPE</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">94.63 ± 0.02</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">88.89 ± 0.03</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">∞</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">∞</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">∞</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-lboi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">Frozen Section</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">81.99 ± 0.03</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">61.97 ± 0.08</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">546.86</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">1044.24</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">1581.22</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-lboi"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">AIFFPE</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">75.46 ± 0.04</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">62.82 ± 0.03</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">554.43</span></td>
+							<td class="tg-9wq8"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">887.47</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">1243.67</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-cly1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">UVCGAN2</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">84.89 ± 0.01</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">70.09 ± 0.03</span></td>
+							<td class="tg-wa1i"><span style="font-weight:700;font-style:normal;text-decoration:none;color:black">513.34</span></td>
+							<td class="tg-wa1i"><span style="font-weight:700;font-style:normal;text-decoration:none;color:black">808.47</span></td>
+							<td class="tg-wa1i"><span style="font-weight:700;font-style:normal;text-decoration:none;color:black">1205.63</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-cly1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">CycleDiffusion</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">70.55 ± 0.02</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">53.42 ± 0.05</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">621.69</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">972.96</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">1486.58</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-cly1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">Ours w/o L0-Reg</span></td>
+							<td class="tg-wa1i"><span style="font-weight:700;font-style:normal;text-decoration:none;color:black">94.64 ± 0.01</span></td>
+							<td class="tg-8b8f"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:black">73.5 ± 0.06</span></td>
+							<td class="tg-8b8f"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:black">544.85</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">839.67</span></td>
+							<td class="tg-8b8f"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:black">1235.65</span></td>
+						  </tr>
+						  <tr>
+							<td class="tg-cly1"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">Ours w/ L0-Reg</span></td>
+							<td class="tg-8b8f"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:black">94.26 ± 0.03</span></td>
+							<td class="tg-wa1i"><span style="font-weight:700;font-style:normal;text-decoration:none;color:black">80.34 ± 0.07</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">546.65</span></td>
+							<td class="tg-8b8f"><span style="font-weight:400;font-style:normal;text-decoration:underline;color:black">822.66</span></td>
+							<td class="tg-nrix"><span style="font-weight:400;font-style:normal;text-decoration:none;color:black">1240.07</span></td>
+						  </tr>
+						</tbody>
+						</table>
+						<p>
+							A quantitative comparison between AIFFPE, UVCGAN2, and CycleDiffusion, and ours. This work outperforms previous works on the downstream kidney subtype classification in macro-averaged Area Under the Curve (AUC) and sample-wise Accuracy (Acc), while obtaining the favorable Case-wise Fréchet Distances (CaseFD). <strong>Bold</strong>/<u>underlined</u> values indicate <strong>best</strong>/<u>second-best</u> performance.
+						</p>
+					<br>
+					<hr>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="font-size: 14px; text-align: left;">
+					<h2>If you find our work useful, please consider citing</h2>
+					<br>
+					<code>
+						@misc{ho2024f2fldm,<br>
+							title={F2FLDM: Latent Diffusion Models with Histopathology Pre-Trained Embeddings for Unpaired Frozen Section to FFPE Translation}, <br>
+							author={Man M. Ho and Shikha Dubey and Yosep Chong and Beatrice Knudsen and Tolga Tasdizen},<br>
+							year={2024},<br>
+							eprint={2404.12650},<br>
+							archivePrefix={arXiv},<br>
+							primaryClass={eess.IV}<br>
+					  }
+					</code>
+					<hr>
+				</td>
+		</tr>
+		<tr>
+			<td>
+				<h2>License</h2>
+				<br>
+				This work, including the trained models, code, and dataset, is for non-commercial uses and research purposes only.
+				<hr>
+			</td>
+		</tr>
+		<tr>
+			
+			<td style="text-align: left;">
+				<h2>References</h2>
+				<br>
+				<p style="font-style: italic;">
+				<b>[AIFFPE]</b> Ozyoruk, Kutsev Bengisu, Sermet Can, Guliz Irem Gokceler, Kayhan Basak, Derya Demir, Gurdeniz Serin, Uguray Payam Hacisalihoglu et al. "Deep learning-based frozen section to FFPE translation." arXiv preprint arXiv:2107.11786 (2021).
+				<br>
+				<b>[UVCGAN2]</b> Torbunov, Dmitrii, Yi Huang, Huan-Hsin Tseng, Haiwang Yu, Jin Huang, Shinjae Yoo, Meifeng Lin, Brett Viren, and Yihui Ren. "Rethinking CycleGAN: Improving Quality of GANs for Unpaired Image-to-Image Translation." arXiv preprint arXiv:2303.16280 (2023).
+				<br>
+				<b>[CycleDiffusion]</b> Wu, Chen Henry, and Fernando De la Torre. "Unifying Diffusion Models' Latent Space, with Applications to CycleDiffusion and Guidance." arXiv preprint arXiv:2210.05559 (2022).
+				<br>
+				<b>[LoRA]</b> Hu, Edward J., Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang, and Weizhu Chen. "Lora: Low-rank adaptation of large language models." arXiv preprint arXiv:2106.09685 (2021).
+				</p>
+			</td>
+		</tr>
+<br>
+</tbody>
+</table>
+<br>
+
+</html>
